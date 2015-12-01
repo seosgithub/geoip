@@ -1,9 +1,9 @@
-require 'geoip'
+require 'maxminddb'
 
-gc = GeoIP.new('GeoLiteCity.dat')
-city = gc.city("108.15.194.254")
+gc = MaxMindDB.new('GeoLite2-City.mmdb')
+res = gc.lookup("108.15.194.254")
 
-latitude = city.latitude
-longitude = city.longitude
+latitude = res.location.latitude
+longitude = res.location.longitude
 
 puts "#{latitude}, #{longitude}"
